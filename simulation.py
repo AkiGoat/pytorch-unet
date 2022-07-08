@@ -24,21 +24,21 @@ def generate_img_and_mask(height, width):
     arr = np.zeros(shape, dtype=bool)
     arr = add_triangle(arr, *triangle_location)
     arr = add_circle(arr, *circle_location1)
-    arr = add_circle(arr, *circle_location2, fill=True)
-    arr = add_mesh_square(arr, *mesh_location)
-    arr = add_filled_square(arr, *square_location)
-    arr = add_plus(arr, *plus_location)
+    # arr = add_circle(arr, *circle_location2, fill=True)
+    # arr = add_mesh_square(arr, *mesh_location)
+    # arr = add_filled_square(arr, *square_location)
+    # arr = add_plus(arr, *plus_location)
     arr = np.reshape(arr, (1, height, width)).astype(np.float32)
 
     # Create target masks
     masks = np.asarray([
-        add_filled_square(np.zeros(shape, dtype=bool), *square_location),
-        add_circle(np.zeros(shape, dtype=bool), *circle_location2, fill=True),
+        # add_filled_square(np.zeros(shape, dtype=bool), *square_location),
+        # add_circle(np.zeros(shape, dtype=bool), *circle_location2, fill=True),
         add_triangle(np.zeros(shape, dtype=bool), *triangle_location),
         add_circle(np.zeros(shape, dtype=bool), *circle_location1),
-         add_filled_square(np.zeros(shape, dtype=bool), *mesh_location),
+         # add_filled_square(np.zeros(shape, dtype=bool), *mesh_location),
         # add_mesh_square(np.zeros(shape, dtype=bool), *mesh_location),
-        add_plus(np.zeros(shape, dtype=bool), *plus_location)
+        # add_plus(np.zeros(shape, dtype=bool), *plus_location)
     ]).astype(np.float32)
 
     return arr, masks
