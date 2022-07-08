@@ -14,7 +14,7 @@ def plot_img_array(img_array, ncol=3):
         plots[i // ncol, i % ncol]
         if (i % ncol == 0):
             [B,G,R]=channelSplit(img_array[i])
-            plots[i // ncol, i % ncol].imshow(B)
+            plots[i // ncol, i % ncol].imshow(B[:,:,0])
         else:
             plots[i // ncol, i % ncol].imshow(img_array[i])
 
